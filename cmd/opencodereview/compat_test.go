@@ -11,6 +11,7 @@ func parseReviewFlags(args []string) (reviewOptions, error) {
 		SilenceUsage:  true,
 		SilenceErrors: true,
 		RunE: func(cmd *cobra.Command, args []string) error {
+			opts.maxTokensBudgetSet = cmd.Flags().Changed("max-tokens-budget")
 			return validateReviewOptions(&opts)
 		},
 	}
@@ -39,6 +40,7 @@ func parseScanFlags(args []string) (scanOptions, error) {
 		SilenceUsage:  true,
 		SilenceErrors: true,
 		RunE: func(cmd *cobra.Command, args []string) error {
+			opts.maxTokensBudgetSet = cmd.Flags().Changed("max-tokens-budget")
 			return validateScanOptions(&opts)
 		},
 	}
